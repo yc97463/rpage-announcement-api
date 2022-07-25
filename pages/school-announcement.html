@@ -15,13 +15,13 @@
         </style>
     </head>
     <body onload="loadData()">
-        <div class="container annList text-center" id="annList"></div>
+        <div class="container annList" id="annList">目前尚無公告</div>
         <script type="text/javascript">
             function setAnn(annContent){
                 document.getElementById('annList').innerHTML = annContent;
             }
             async function loadData(){
-                const resp = await fetch('', {
+                const resp = await fetch('https://smhsguide-api.dstw.dev/ann/latest.json', {
                     Method: 'GET',
                     Headers: {
                         Accept: 'application.json',
