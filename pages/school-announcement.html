@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: transparent;
+            }
+            .annList{
+                background-color: transparent;
+                display: block;
+            }
+        </style>
+    </head>
+    <body onload="loadData()">
+        <div class="container annList text-center" id="annList"></div>
+        <script type="text/javascript">
+            function setAnn(annContent){
+                document.getElementById('annList').innerHTML = annContent;
+            }
+            async function loadData(){
+                const resp = await fetch('', {
+                    Method: 'GET',
+                    Headers: {
+                        Accept: 'application.json',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json());
+                let content = resp;
+                setAnn(content);
+            }
+        </script>
+    </body>
+</html>
