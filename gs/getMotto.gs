@@ -9,7 +9,7 @@ function doGet(request){
   var jsonFormated = [];
   var sid = 0;
   sheetValues.forEach((data) => {
-    if(data[2]!=true){return;};
+    if(data[2]!=true||data[1]==""){return;};
     jsonFormated.push({
       ['id']:sid,
       ['name']:data[0].toString(),
