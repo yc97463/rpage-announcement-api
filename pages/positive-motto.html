@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <style>
+            .motto{
+                display: block;
+            }
+        </style>
+    </head>
+    <body onload="loadData()">
+        <div class="motto" id="motto"></div>
+        <script type="text/javascript">
+            function randomNumber(max) {  
+                min = 0;
+                if(max-min == 0){
+                    return 0;
+                }else{
+                    return Math.floor(Math.random() * (max - min) + min); 
+                }
+            }
+            function setMotto(mottoContent){
+                document.getElementById('motto').innerHTML = mottoContent;
+            }
+            async function loadData(){
+                const resp = await fetch('https://script.google.com/macros/s/AKfycbxiw7l54uqBEkMf2QTI2xMglTYdnCRklKqNelqkpS5tOaEUmFYtyUiGixQJz7RJnKsG/exec', {
+                    Method: 'GET',
+                    Headers: {
+                        Accept: 'application.json',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json());
+                let content = resp[randomNumber(resp.length)]['content'];
+                setMotto(content);
+            }
+        </script>
+    </body>
+</html>
