@@ -16,8 +16,8 @@
     </head>
     <body onload="loadData()">
         <div class="container motto text-center">
-            <div id="motto"></div>
-            <div onclick="loadData()">換一則新的正向小語</div>
+            <div id="motto">正向小語載入中～🎶</div>
+            <div id="renew" onclick="loadData('renew')"></div>
         </div>
         <script type="text/javascript">
             function randomNumber(max) {  
@@ -28,10 +28,15 @@
                     return Math.floor(Math.random() * (max - min) + min); 
                 }
             }
-            function setMotto(mottoContent){
-                document.getElementById('motto').innerHTML = mottoContent;
+            function setMotto(resp){
+                let content = resp[randomNumber(resp.length)]['content'];
+                document.getElementById('motto').innerHTML = content;
             }
-            async function loadData(){
+            async function loadData(status){
+                if(status=="renew"){
+                    document.getElementById('motto').innerHTML = "";
+                    document.getElementById('renew').innerHTML = "正向小語載入中～🎶";
+                }
                 const resp = await fetch('https://script.google.com/macros/s/AKfycbxiw7l54uqBEkMf2QTI2xMglTYdnCRklKqNelqkpS5tOaEUmFYtyUiGixQJz7RJnKsG/exec', {
                     Method: 'GET',
                     Headers: {
@@ -39,8 +44,8 @@
                         'Content-Type': 'application/json'
                     }
                 }).then(response => response.json());
-                let content = resp[randomNumber(resp.length)]['content'];
-                setMotto(content);
+                document.getElementById('renew').innerHTML = "換一則新的正向小語";
+                setMotto(resp);
             }
         </script>
     </body>
