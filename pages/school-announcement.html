@@ -22,14 +22,20 @@
                 document.getElementById('annList').innerHTML = annContent;
             }
             async function loadData(){
-                const resp = await fetch('https://smhsguide-api.dstw.dev/ann/latest.json', {
-                    Method: 'GET',
-                    Headers: {
+                const resp = await fetch('https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        "Rcg": 24,
+                        "Op": "getpartlist",
+                        "Page": 1
+                    }),
+                    headers: {
                         Accept: 'application.json',
                         'Content-Type': 'application/json'
                     }
                 }).then(response => response.json());
                 let content = resp;
+                console.log(resp);
                 setAnn(content);
             }
         </script>
