@@ -25,16 +25,20 @@ jobs:
       # - name: Install
       #   run: npm ci
       - name: Setup python3
-        run: pip install requests requests_html lxml html5lib beautifulsoup4
-      - name: Run Script
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3'
+      - name: Install python packages
         run: |
-          python3 src/crawler.py
-      # - name: Commit and push to A.R.
-      #   run: |
-      #     cd data
-      #     git config user.email "sw@imych.one"
-      #     git config user.name "SMHS Open Source Organization"
-      #     git add -A
-      #     git commit -m "update the announcement"
-      #     git push -f
+          pip install --upgrade pip
+          pip install requests requests_html lxml html5lib beautifulsoup4
+      - name: Run Script
+        run: python src/crawler.py
+      - name: Commit files
+        run: |
+          git config user.email "git@imych.one"
+          git config user.name "Github Action"
+          git add -A
+          git commit -m "update announcement" -a
+          git push
 
