@@ -1,0 +1,43 @@
+name: Get Announcements
+
+on:
+  # schedule:
+  #   # Daily at 8:20 UTC
+  #   - cron: '20 8 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'dist/**'
+  workflow_dispatch:
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      # - name: Setup node
+      #   uses: actions/setup-node@master
+      #   with:
+      #     node-versionL 16
+      #     cache: npm
+      # - name: Install
+      #   run: npm ci
+      - name: Setup python3
+        run: pip install
+      - run: |
+        pip install requests requests_html
+        pip install lxml
+      - name: Run Script
+        run: |
+          src/crawler.py
+      - name: Commit and push to A.R.
+        run: |
+          cd data
+          git config user.email "sw@imych.one"
+          git config user.name "SMHS Open Source Organization"
+          git add -A
+          git commit -m "update the announcement"
+          git push -f
+
