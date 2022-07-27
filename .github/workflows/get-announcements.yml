@@ -25,7 +25,7 @@ jobs:
       # - name: Install
       #   run: npm ci
       - name: Setup python3
-        run: pip install requests requests_html lxml
+        run: pip install requests requests_html lxml html5lib beautifulsoup4
       - name: Run Script
         run: |
           python3 src/crawler.py
