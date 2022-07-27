@@ -12,7 +12,6 @@ function doGet(request){
     if(data[2]!=true||data[1]==""){return;};
     jsonFormated.push({
       ['id']:sid,
-      ['name']:data[0].toString(),
       ['content']:data[1].toString(),
     })
     sid+=1
