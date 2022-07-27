@@ -25,10 +25,7 @@ jobs:
       # - name: Install
       #   run: npm ci
       - name: Setup python3
-        run: pip install
-      - run: |
-        pip install requests requests_html
-        pip install lxml
+        run: pip install requests requests_html lxml
       - name: Run Script
         run: |
           src/crawler.py
