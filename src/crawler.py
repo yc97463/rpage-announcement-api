@@ -1,12 +1,11 @@
-from requests_html import HTML
+import requests
 
-def parse_article_entries(doc):
-    html = HTML(html=doc)
-    post_entries = html.find('div.r-ent')
-    return post_entries
+def fetch(url):
+    response = requests.get(url)
+    response = requests.get(url, cookies={'over18': '1'})  # 一直向 server 回答滿 18 歲了 !
+    return response
 
-url = 'https://www.ptt.cc/bbs/movie/index.html'
+url = 'https://www.smhs.kh.edu.tw/p/403-1000-24-1.php'
 resp = fetch(url)  # step-1
-post_entries = parse_article_entries(resp.text)  # step-2
 
-print(post_entries)  # result of setp-2
+print(resp.text) # result of setp-1
