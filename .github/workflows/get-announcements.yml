@@ -28,7 +28,7 @@ jobs:
         run: pip install requests requests_html lxml
       - name: Run Script
         run: |
-          src/crawler.py
+          python3 src/crawler.py
       - name: Commit and push to A.R.
         run: |
           cd data
