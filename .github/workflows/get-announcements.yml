@@ -29,12 +29,12 @@ jobs:
       - name: Run Script
         run: |
           python3 src/crawler.py
-      - name: Commit and push to A.R.
-        run: |
-          cd data
-          git config user.email "sw@imych.one"
-          git config user.name "SMHS Open Source Organization"
-          git add -A
-          git commit -m "update the announcement"
-          git push -f
+      # - name: Commit and push to A.R.
+      #   run: |
+      #     cd data
+      #     git config user.email "sw@imych.one"
+      #     git config user.name "SMHS Open Source Organization"
+      #     git add -A
+      #     git commit -m "update the announcement"
+      #     git push -f
 
