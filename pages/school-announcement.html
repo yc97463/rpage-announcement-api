@@ -21,6 +21,7 @@
             function setAnn(annContent){
                 document.getElementById('annList').innerHTML = annContent;
             }
+            
             async function loadData(){
                 const resp = await fetch('https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist', {
                     method: 'POST',
@@ -30,6 +31,11 @@
                         "Page": 1
                     }),
                     headers: {
+                        Host: 'www.smhs.kh.edu.tw',
+                        Origin: 'https://www.smhs.kh.edu.tw',
+                        Referer: 'https://www.smhs.kh.edu.tw/p/403-1000-24-1.php',
+                        'Sec-Fetch-Mode': 'cors',
+                        'Sec-Fetch-Site': 'same-origin',
                         Accept: 'application.json',
                         'Content-Type': 'application/json'
                     }
