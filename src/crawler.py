@@ -7,6 +7,7 @@ soup = BeautifulSoup(resp.text, 'html5lib')
 
 links = soup.find_all('div', class_='mtitle')
 print(links)
+
 # for link in links:
 #     if 'href' in link.attrs:
 #         print(link['href'])
