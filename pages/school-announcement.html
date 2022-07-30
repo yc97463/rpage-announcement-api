@@ -23,25 +23,8 @@
             }
             
             async function loadData(){
-                const resp = await fetch('https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        "Rcg": 24,
-                        "Op": "getpartlist",
-                        "Page": 1
-                    }),
-                    headers: {
-                        Host: 'www.smhs.kh.edu.tw',
-                        Origin: 'https://www.smhs.kh.edu.tw',
-                        Referer: 'https://www.smhs.kh.edu.tw/p/403-1000-24-1.php',
-                        'Sec-Fetch-Mode': 'cors',
-                        'Sec-Fetch-Site': 'same-origin',
-                        Accept: 'application.json',
-                        'Content-Type': 'application/json'
-                    }
-                }).then(response => response.json());
-                let content = resp;
-                console.log(resp);
+                const response = await fetch('https://smhsguide-workers.dstw.dev/school-ann').then(response => response.json());
+                const content = response.content;
                 setAnn(content);
             }
         </script>
