@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "huninn";
+    src: url(../assets/huninn.ttf);
+}
+body{
+    background-color: transparent;
+    font-family: "huninn"
+}
+.motto{
+    background-color: transparent;
+    display: block;
+}
