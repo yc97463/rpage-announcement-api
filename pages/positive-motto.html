@@ -24,6 +24,8 @@
             function setMotto(resp){
                 let content = resp[randomNumber(resp.length)]['content'];
                 document.getElementById('motto').innerHTML = content;
+                document.getElementById('renew').innerHTML = "";
+
             }
             async function loadData(status){
                 if(status=="renew"){
@@ -40,6 +42,9 @@
                 //document.getElementById('renew').innerHTML = "換一則新的正向小語";
                 setMotto(resp);
             }
+            setInterval(() => {
+                loadData('renew')
+            }, 5000)
         </script>
     </body>
 </html>
