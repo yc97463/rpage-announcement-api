@@ -44,8 +44,6 @@ async function handleRequest(request) {
             console.log(error)
         }
         
-    }else{
-        // url = "https://script.google.com/macros/s/AKfycbxiw7l54uqBEkMf2QTI2xMglTYdnCRklKqNelqkpS5tOaEUmFYtyUiGixQJz7RJnKsG/exec";
     }
     
     return new Response(JSON.stringify(await res.json()), init)
