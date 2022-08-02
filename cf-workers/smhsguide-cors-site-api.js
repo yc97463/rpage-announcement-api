@@ -28,6 +28,7 @@ async function handleRequest(request) {
         res = await fetch(url, { method: 'GET' });
     }else if(pathname=="/school-ann"){
         url = "https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist";
+        const rcg = ourl.searchParams.get('rcg');
         try {
             res = await fetch(url, { 
                 method: 'POST',
@@ -35,7 +36,7 @@ async function handleRequest(request) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },    
                 body: new URLSearchParams({
-                    "Rcg": 24,
+                    "Rcg": rcg,
                     "Op": "getpartlist",
                     "Page": 1
                 })

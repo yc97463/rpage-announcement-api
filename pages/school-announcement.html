@@ -18,7 +18,7 @@
         }
         
         async function loadData(){
-            const response = await fetch('https://smhsguide-workers.dstw.dev/school-ann').then(response => response.json());
+            const response = await fetch('https://smhsguide-workers.dstw.dev/school-ann?rcg='+rcg).then(response => response.json());
             const content = response.content;
             setAnn(content);
         }
