@@ -10,11 +10,15 @@
         <base href="https://www.smhs.kh.edu.tw/" target="_blank">
     </head>
     <body onload="loadData()">
-        <div class="container annList" id="annList">目前尚無公告</div>
+        <div class="container">
+            <div class="annList" id="annList">目前尚無公告</div>
+            <div class="after" id="readMore"></div>
+        </div>
     </body>
     <script type="text/javascript">
         function setAnn(annContent){
             document.getElementById('annList').innerHTML = annContent;
+            document.getElementById('readMore').innerHTML = "<a href='https://www.smhs.kh.edu.tw/p/403-1000-"+rcg+".php?Lang=zh-tw'>更多公告</a>";
         }
         
         async function loadData(){
