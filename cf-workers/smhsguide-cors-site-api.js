@@ -43,7 +43,6 @@ async function handleRequest(request) {
         } catch (error) {
             console.log(error)
         }
-        
     }
     
     return new Response(JSON.stringify(await res.json()), init)
