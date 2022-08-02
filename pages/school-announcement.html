@@ -6,20 +6,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="../assets/style.css??v=2" rel="stylesheet">
+        <script src="../assets/common.js"></script>
         <base href="https://www.smhs.kh.edu.tw/" target="_blank">
     </head>
     <body onload="loadData()">
         <div class="container annList" id="annList">目前尚無公告</div>
-        <script type="text/javascript">
-            function setAnn(annContent){
-                document.getElementById('annList').innerHTML = annContent;
-            }
-            
-            async function loadData(){
-                const response = await fetch('https://smhsguide-workers.dstw.dev/school-ann').then(response => response.json());
-                const content = response.content;
-                setAnn(content);
-            }
-        </script>
     </body>
+    <script type="text/javascript">
+        function setAnn(annContent){
+            document.getElementById('annList').innerHTML = annContent;
+        }
+        
+        async function loadData(){
+            const response = await fetch('https://smhsguide-workers.dstw.dev/school-ann').then(response => response.json());
+            const content = response.content;
+            setAnn(content);
+        }
+    </script>
 </html>
