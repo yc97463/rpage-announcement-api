@@ -37,7 +37,7 @@ async function handleRequest(request) {
                 body: new URLSearchParams({
                     "Rcg": 24,
                     "Op": "getpartlist",
-                    "Page": 2
+                    "Page": 1
                 })
             })
         } catch (error) {
