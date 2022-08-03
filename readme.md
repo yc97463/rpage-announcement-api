@@ -1,6 +1,6 @@
 # 如何嵌入公告小工具？
 
-## Google 協作平台
+## 取得公告模組編號
 
 首先，打開校網首頁（或放置公告模組之頁面），接著點選指定公告模組的「更多」。
 
@@ -9,6 +9,8 @@
 抄寫網址中的模組編號（如圖）。
 
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182557340-abee0086-36d2-44ce-8e9d-fbfe0a1eb54b.png">
+
+## Google 協作平台
 
 打開 Google 協作平台編輯頁面。
 
@@ -26,3 +28,11 @@
 拉伸區塊高度即完成嵌入公告。
 
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182557794-0aedde71-d7b6-43c6-b249-47912c84d6e1.png">
+
+## iframe 小工具
+
+請在您的網站中，貼上以下程式碼。`<模組編號>` 請替換成上方抄寫的資訊。
+
+```html
+<iframe src="https://smhsguide-api.dstw.dev/pages/school-announcement?rcg=<模組編號>" width="125px" height="150px"></iframe>
+```
