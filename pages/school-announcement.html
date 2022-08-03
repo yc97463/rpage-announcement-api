@@ -14,7 +14,10 @@
         <div class="container">
             <div class="annList" id="annList">取得公告中⋯</div>
             <hr>
-            <div class="after" id="readMore"></div>
+            <div class="after">
+                <a onClick="window.location.reload()">重新取得公告 |</a>
+                <a id="readMore"></a>
+            </div>
         </div>
         <div class="modal fade" id="externalLink" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -38,7 +41,7 @@
     <script type="text/javascript">
         function setAnn(annContent){
             document.getElementById('annList').innerHTML = annContent;
-            document.getElementById('readMore').innerHTML = "<a onClick='readMore("+rcg+")'>更多公告</a>";
+            document.getElementById('readMore').innerHTML = "<a onClick='readMore("+rcg+")'>查看更多公告</a>";
         }
         function readMore(rcg, title){
             const externalLink = new bootstrap.Modal('#externalLink', {
