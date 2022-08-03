@@ -16,7 +16,8 @@
 
 接著選擇右側選單的「內嵌」功能。
 
-> <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182557873-ee2e62e5-ba50-462d-8938-728a18b83e78.png">
+> <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182559092-0cfdd0af-3a90-4af1-b83b-2e207c072d55.png">
+
 
 
 接著貼上 `https://smhsguide-api.dstw.dev/pages/school-announcement?rcg=<模組編號>`，`<模組編號>` 請替換成上方抄寫的資訊。
