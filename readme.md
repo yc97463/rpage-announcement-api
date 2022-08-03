@@ -22,8 +22,6 @@
 
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182559092-0cfdd0af-3a90-4af1-b83b-2e207c072d55.png">
 
-
-
 接著貼上 `https://smhsguide-api.dstw.dev/pages/school-announcement?rcg=<模組編號>`，`<模組編號>` 請替換成上方抄寫的資訊。
 
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182557731-01210e22-0515-4fcf-85f1-278596e1d23c.png">
@@ -42,4 +40,4 @@
 
 ## 特別感謝
 
-[@liaojason2](//github.com/liaojason2) 協助修正 Cloudflare Workers 存取 CORS 網站。
+[@liaojason2](https://github.com/liaojason2) 協助修正 Cloudflare Workers 存取 CORS 網站。
