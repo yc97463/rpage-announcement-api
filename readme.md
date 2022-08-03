@@ -42,4 +42,4 @@
 
 ## 特別感謝
 
-@liaojason2 協助修正 Cloudflare Workers 存取 CORS。
+@liaojason2 協助修正 Cloudflare Workers 存取 CORS 網站。
