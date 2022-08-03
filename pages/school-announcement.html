@@ -7,18 +7,49 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="./assets/style.css??v=3" rel="stylesheet">
         <script src="./assets/common.js?v=3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <base href="https://www.smhs.kh.edu.tw/" target="_blank">
     </head>
     <body onload="loadData()">
         <div class="container">
-            <div class="annList" id="annList">目前尚無公告</div>
+            <div class="annList" id="annList">取得公告中⋯</div>
+            <hr>
             <div class="after" id="readMore"></div>
+        </div>
+        <div class="modal fade" id="externalLink" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">您即將前往外部網站</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        提醒您，您即將開啟新分頁並前往「<span id="externalLink.title"></span>」。<br>
+                        網址為 <code><span id="externalLink.link"></span></code>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <a type="button" class="btn btn-primary" id="externalLink.go">前往</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
     <script type="text/javascript">
         function setAnn(annContent){
             document.getElementById('annList').innerHTML = annContent;
-            document.getElementById('readMore').innerHTML = "<a href='https://www.smhs.kh.edu.tw/p/403-1000-"+rcg+".php?Lang=zh-tw'>更多公告</a>";
+            document.getElementById('readMore').innerHTML = "<a onClick='readMore("+rcg+")'>更多公告</a>";
+        }
+        function readMore(rcg, title){
+            const externalLink = new bootstrap.Modal('#externalLink', {
+                keyboard: false
+            })
+            document.getElementById('externalLink.title').innerText = "更多公告";
+            document.getElementById('externalLink.link').innerText = 'https://www.smhs.kh.edu.tw/p/403-1000-'+rcg+'-2.php?Lang=zh-tw';
+            document.getElementById('externalLink.go').href = 'https://www.smhs.kh.edu.tw/p/403-1000-'+rcg+'-2.php?Lang=zh-tw';
+            externalLink.show();
+            // alert("即將轉入公告列表第二頁。");
+            // window.open('https://www.smhs.kh.edu.tw/p/403-1000-'+rcg+'-2.php?Lang=zh-tw', '_blank');
         }
         
         async function loadData(){
