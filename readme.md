@@ -14,7 +14,7 @@
 
 ### Google 協作平台
 
-打開 Google 協作平台編輯頁面。
+如果您採用「Google 協作平台」，請打開 Google 協作平台編輯頁面。
 
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182557919-8220de70-1ca4-466f-83f4-8ea73623e34a.png">
 
@@ -34,7 +34,7 @@
 
 ### iframe 小工具
 
-請在您的網站中，貼上以下程式碼。`<模組編號>` 請替換成上方抄寫的資訊。
+如果您的平台支援程式碼，請在您的網站中，貼上以下程式碼。`<模組編號>` 請替換成上方抄寫的資訊。
 
 ```html
 <iframe src="https://smhsguide-api.dstw.dev/pages/school-announcement?rcg=<模組編號>" width="125px" height="150px"></iframe>
