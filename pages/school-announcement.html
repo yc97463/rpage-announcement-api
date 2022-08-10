@@ -75,6 +75,9 @@
         }
         
         async function loadData(){
+            if(!rcg){
+                alert('請鍵入模組編號');
+            }
             const response = await fetch(apiHost+'/school-ann?rcg='+rcg).then(response => response.json());
             const content = response.content;
             setAnn(content);
