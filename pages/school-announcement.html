@@ -60,8 +60,8 @@
             document.getElementById('externalLink.title').innerText = title;
             switch(type){
                 case 'rcg': 
-                    ourl = 'https://www.smhs.kh.edu.tw/p/403-1000-'+ourl+'-2.php?Lang=zh-tw';
                     url = await shorten('https://www.smhs.kh.edu.tw/p/403-1000-'+ourl+'-2.php?Lang=zh-tw');
+                    ourl = 'https://www.smhs.kh.edu.tw/p/403-1000-'+ourl+'-2.php?Lang=zh-tw';
                     break;
                 case 'url':
                     url = await shorten(ourl);
