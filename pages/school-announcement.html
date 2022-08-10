@@ -16,6 +16,7 @@
             <hr>
             <div class="after">
                 <a onClick="window.location.reload()">重新取得公告 |</a>
+                <a href="https://dstw.dev/r2njy7">如何嵌入公告小工具教學 |</a>
                 <a id="readMore"></a>
             </div>
         </div>
@@ -40,8 +41,13 @@
     </body>
     <script type="text/javascript">
         function setAnn(annContent){
-            document.getElementById('annList').innerHTML = annContent;
-            document.getElementById('readMore').innerHTML = "<a onClick='readMore("+rcg+")'>查看更多公告</a>";
+            if(annContent=="\n"){
+                document.getElementById('annList').innerHTML = "尚無任何公告或無法存取公告。";
+            }else{
+                document.getElementById('annList').innerHTML = annContent;
+                document.getElementById('readMore').innerHTML = "<a onClick='readMore("+rcg+")'>查看更多公告</a>";
+            }
+            
         }
         function readMore(rcg, title){
             const externalLink = new bootstrap.Modal('#externalLink', {
