@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="./assets/style.css??v=3" rel="stylesheet">
-        <script src="./assets/common.js?v=3"></script>
+        <script src="./assets/common.js?v=4"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <base href="https://www.smhs.kh.edu.tw/" target="_blank">
     </head>
@@ -15,8 +15,8 @@
             <div class="annList" id="annList">取得公告中⋯</div>
             <hr>
             <div class="after">
-                <a onClick="window.location.reload()">重新取得公告 |</a>
-                <a href="https://dstw.dev/r2njy7">如何嵌入公告小工具教學 |</a>
+                <a onClick="window.location.reload()">重新取得公告</a> |
+                <a onClick="externalLink('url', '嵌入公告小工具教學', 'https://github.com/yc97463/smhs-guide-api/blob/main/readme.md')">如何嵌入公告小工具教學</a> |
                 <a id="readMore"></a>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalScrollableTitle">您即將前往外部網站</h5>
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">您即將開啟新分頁</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -41,28 +41,41 @@
     </body>
     <script type="text/javascript">
         function setAnn(annContent){
-            if(annContent=="\n"){
-                document.getElementById('annList').innerHTML = "尚無任何公告或無法存取公告。";
-            }else{
-                document.getElementById('annList').innerHTML = annContent;
-                document.getElementById('readMore').innerHTML = "<a onClick='readMore("+rcg+")'>查看更多公告</a>";
+            switch(annContent){
+                case '\n':
+                    document.getElementById('annList').innerHTML = "尚無任何公告或無法存取公告。<br>您可以點選「重新取得公告」或「查看更多公告」。<br>"+annContent;
+                    break;
+                default:
+                    document.getElementById('annList').innerHTML = annContent;
             }
-            
+            document.getElementById('readMore').innerHTML = `<a onClick="externalLink('rcg', '第二頁公告', ${rcg})">查看更多公告</a>`;
         }
-        function readMore(rcg, title){
+        async function shorten(url){
+            let doFetch = await fetch(apiHost+'/shorten?url='+url).then(response => response.json());
+            return doFetch.shorturl;
+        }
+        async function externalLink(type, title, ourl){
             const externalLink = new bootstrap.Modal('#externalLink', {
                 keyboard: false
             })
-            document.getElementById('externalLink.title').innerText = "更多公告";
-            document.getElementById('externalLink.link').innerText = 'https://www.smhs.kh.edu.tw/p/403-1000-'+rcg+'-2.php?Lang=zh-tw';
-            document.getElementById('externalLink.go').href = 'https://www.smhs.kh.edu.tw/p/403-1000-'+rcg+'-2.php?Lang=zh-tw';
+            document.getElementById('externalLink.title').innerText = title;
+            switch(type){
+                case 'rcg': 
+                    url = await shorten('https://www.smhs.kh.edu.tw/p/403-1000-'+ourl+'-2.php?Lang=zh-tw');
+                    break;
+                case 'url':
+                    url = await shorten(ourl);
+                    break;
+            }
+            document.getElementById('externalLink.link').innerText = ourl;
+            document.getElementById('externalLink.go').href = url;
             externalLink.show();
             // alert("即將轉入公告列表第二頁。");
             // window.open('https://www.smhs.kh.edu.tw/p/403-1000-'+rcg+'-2.php?Lang=zh-tw', '_blank');
         }
         
         async function loadData(){
-            const response = await fetch('https://smhsguide-workers.dstw.dev/school-ann?rcg='+rcg).then(response => response.json());
+            const response = await fetch(apiHost+'/school-ann?rcg='+rcg).then(response => response.json());
             const content = response.content;
             setAnn(content);
         }
