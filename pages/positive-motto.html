@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="./assets/style.css?v=3" rel="stylesheet">
-        <script src="./assets/common.js?v=3"></script>
+        <script src="./assets/common.js?v=4"></script>
     </head>
     <body onload="loadData()">
         <div class="container motto text-center">
@@ -33,7 +33,7 @@
                     document.getElementById('motto').innerHTML = "";
                     document.getElementById('renew').innerHTML = "正向小語載入中～🎶";
                 }
-                const resp = await fetch('https://smhsguide-workers.dstw.dev/positive-motto', {
+                const resp = await fetch(apiHost+'/positive-motto', {
                     Method: 'GET',
                     Headers: {
                         Accept: 'application.json',
