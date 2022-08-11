@@ -5,17 +5,17 @@
         <meta http-equiv="pragma" content="no-cache">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link href="./assets/style.css??v=5" rel="stylesheet">
-        <script src="./assets/common.js?v=4"></script>
+        <script src="./assets/common.js?v=5"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <base href="https://www.smhs.kh.edu.tw/" target="_blank">
     </head>
     <body onload="loadData()">
         <div class="container">
-            <div class="annList" id="annList">取得公告中⋯</div>
+            <div class="annList" id="annList"></div>
             <hr>
             <div class="after">
                 <a onClick="window.location.reload()">重新取得公告</a> |
-                <a onClick="externalLink('url', '嵌入公告小工具教學', 'https://github.com/yc97463/smhs-guide-api/blob/main/readme.md')">如何嵌入公告小工具教學</a> |
+                <a onClick="externalLink('url', '嵌入公告小工具教學', 'https://github.com/yc97463/smhs-guide-api/blob/main/readme.md')">如何嵌入公告小工具</a> |
                 <a id="readMore"></a>
             </div>
         </div>
@@ -39,10 +39,13 @@
         </div>
     </body>
     <script type="text/javascript">
+        function setAlert(type, content){
+            return `<div class="alert alert-${type}">${content}</div>`;
+        }
         function setAnn(annContent){
             switch(annContent){
                 case '\n':
-                    document.getElementById('annList').innerHTML = "尚無任何公告或無法存取公告。<br>您可以點選「重新取得公告」或「查看更多公告」。";
+                    document.getElementById('annList').innerHTML = setAlert('danger', '尚無任何公告或無法存取公告。')+`您可以點選「重新取得公告」或「查看更多公告」。`;
                     break;
                 default:
                     document.getElementById('annList').innerHTML = annContent;
@@ -78,7 +81,8 @@
             if(!rcg){
                 alert('請鍵入模組編號');
             }
-            const response = await fetch(apiHost+'/school-ann?rcg='+rcg).then(response => response.json());
+            document.getElementById('annList').innerHTML = setAlert('warning', '正在取得公告⋯');
+            const response = await fetch(apiHost+'/sch-ann?rcg='+rcg).then(response => response.json());
             const content = response.content;
             setAnn(content);
         }
