@@ -16,7 +16,7 @@ function doGet(request){
     })
     sid+=1
   })
-var exportFormat = JSON.stringify(jsonFormated);
+  var exportFormat = JSON.stringify(jsonFormated);
   var final = ContentService.createTextOutput(exportFormat).setMimeType(ContentService.MimeType.JSON);
   Logger.log(final);
   return final;
