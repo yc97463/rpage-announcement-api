@@ -1,4 +1,4 @@
-const apiHost = 'https://smhsguide-workers.dstw.dev';
+const apiHost = 'https://api.smhsguide.dstw.dev/api';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let latest = urlParams.get('load');
