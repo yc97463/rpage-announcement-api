@@ -61,7 +61,7 @@ async function handleRequest(request) {
               "Content-Type": "text/html",
             }
         }
-        if(pathname=="/" || pathname.startsWith('/assets')){
+        if(pathname=="/"){
             host = 'https://ghp.smhs.dstw.dev'+pathname;
         }else{
             host = 'https://ghp.smhs.dstw.dev/pages'+pathname;
