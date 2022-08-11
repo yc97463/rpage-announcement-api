@@ -61,9 +61,12 @@ async function handleRequest(request) {
               "Content-Type": "text/html",
             }
         }
-        host = 'https://ghp.smhs.dstw.dev/pages'+pathname;
+        if(pathname=="/" || pathname.startsWith('/assets')){
+            host = 'https://ghp.smhs.dstw.dev'+pathname;
+        }else{
+            host = 'https://ghp.smhs.dstw.dev/pages'+pathname;
+        }
         return fetch(host, init);
-
     }
     
       
