@@ -31,12 +31,13 @@ async function handleRequest(request) {
                 res = await fetch(url, { method: 'GET' });
                 break;
             case 'sch-ann':
-                url = "https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist";
+                url = "https://163.16.244.174/app/index.php?Action=mobilercglist";
                 const rcg = ourl.searchParams.get('rcg');
                 try {
                     res = await fetch(url, { 
                         method: 'POST',
-                        headers:{
+                        headers: {
+                            'Host': 'www.smhs.kh.edu.tw',
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },    
                         body: new URLSearchParams({
