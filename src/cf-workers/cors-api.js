@@ -61,7 +61,7 @@ async function handleRequest(request) {
               "Content-Type": "text/html",
             }
         }
-        host = 'https://ghp.smhsguide.dstw.dev/pages'+pathname;
+        host = 'https://ghp.smhs.dstw.dev/pages'+pathname;
         return fetch(host, init);
 
     }
