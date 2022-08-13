@@ -23,9 +23,10 @@
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182559092-0cfdd0af-3a90-4af1-b83b-2e207c072d55.png">
 
 接著貼上下方的連結，`<模組編號>` 請替換成上方抄寫的資訊。
-'''
+
+```
 https://func.smhs.dstw.dev/school-announcement?rcg=<模組編號>
-'''
+```
 
 > <img width="50%" alt="image" src="https://user-images.githubusercontent.com/53697217/182557731-01210e22-0515-4fcf-85f1-278596e1d23c.png">
 
