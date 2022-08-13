@@ -7,7 +7,7 @@ import url from "url";
 http.createServer(async function (req, res) {
   const queryObject = url.parse(req.url, true).query;
   const rcg = queryObject.rcg || 24;
-  const host = queryObject.rcg || "https://www.smhs.kh.edu.tw/";
+  const host = queryObject.host || "https://www.smhs.kh.edu.tw";
   // console.log(rcg);
   const ourl = host+"/app/index.php?Action=mobilercglist";
   const response = await fetch(ourl, {
