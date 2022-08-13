@@ -1,8 +1,21 @@
-# Google Cloud Run Deploy Instruction
+# HTTP server for deploy to Google Cloud Run
 
-## Deploy to GCR
+## Quickstart
+
+- Run server on localhost
 
 ```sh
+# Install dependency
+npm install
+
+# Run Server
+npm start
+```
+
+- Deploy to GCR
+
+```sh
+# Deploy to Google Cloud Run
 gcloud run deploy
 ```
 
