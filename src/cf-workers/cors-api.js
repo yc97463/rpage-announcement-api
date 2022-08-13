@@ -31,28 +31,32 @@ async function handleRequest(request) {
                 res = await fetch(url, { method: 'GET' });
                 break;
             case 'sch-ann':
-                url = "https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist";
-                const rcg = ourl.searchParams.get('rcg');
-                try{
-                    res = await fetch(url, { 
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },    
-                        body: new URLSearchParams({
-                            "Rcg": rcg,
-                            "Op": "getpartlist",
-                            "Page": 1
-                        })
-                    })
-                }catch(error){
-                    console.log(error)
-                }
+                url = "https://fetch-ann-asia-uhnhfw2fva-de.a.run.app";
+                rcg = ourl.searchParams.get('rcg');
+                res = await fetch(url+'/?rcg='+rcg, { method: 'GET'})
+                // url = "https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist";
+                // const rcg = ourl.searchParams.get('rcg');
+                // try{
+                //     res = await fetch(url, { 
+                //         method: 'POST',
+                //         headers: {
+                //             'Content-Type': 'application/x-www-form-urlencoded'
+                //         },    
+                //         body: new URLSearchParams({
+                //             "Rcg": rcg,
+                //             "Op": "getpartlist",
+                //             "Page": 1
+                //         })
+                //     })
+                // }catch(error){
+                //     console.log(error)
+                // }
                 break;
             case 'shorten':
                 url = "<shorten-api>";
                 const url_ori = ourl.searchParams.get('url');
                 res = await fetch(url+url_ori, { method: 'GET' });
+                break;
         }
         return new Response(JSON.stringify(await res.json()), init);
     }else{
