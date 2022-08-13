@@ -1,2 +1,4 @@
 .vscode/settings.json
 .DS_Store
+src/gcloud-google-cloud-run/node_modules
+src/gcloud-google-cloud-run/package-lock.json
