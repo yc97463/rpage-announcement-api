@@ -5,7 +5,7 @@
         <meta http-equiv="pragma" content="no-cache">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link href="./assets/style.css??v=5" rel="stylesheet">
-        <script src="./assets/common.js?v=6"></script>
+        <script src="./assets/common.js?v=7"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <base href="https://www.smhs.kh.edu.tw/" target="_blank">
     </head>
@@ -15,7 +15,7 @@
             <hr>
             <div class="after">
                 <a onClick="window.location.reload()">重新取得公告</a> |
-                <a onClick="externalLink('url', '嵌入公告小工具教學', 'https://github.com/yc97463/smhs-guide-api/blob/main/readme.md')">如何嵌入公告小工具</a> |
+                <a onClick="externalLink('url', '嵌入公告小工具教學', 'https://github.com/yc97463/smhs-guide-api/blob/main/readme.md')">公告小工具</a> |
                 <a id="readMore"></a>
             </div>
         </div>
@@ -63,8 +63,8 @@
             document.getElementById('externalLink.title').innerText = title;
             switch(type){
                 case 'rcg': 
-                    url = await shorten('https://www.smhs.kh.edu.tw/p/403-1000-'+ourl+'-2.php?Lang=zh-tw');
-                    ourl = 'https://www.smhs.kh.edu.tw/p/403-1000-'+ourl+'-2.php?Lang=zh-tw';
+                    url = await shorten(host+'/p/403-1000-'+ourl+'-2.php?Lang=zh-tw');
+                    ourl = host+'p/403-1000-'+ourl+'-2.php?Lang=zh-tw';
                     break;
                 case 'url':
                     url = await shorten(ourl);
@@ -82,7 +82,7 @@
                 alert('請鍵入模組編號');
             }
             document.getElementById('annList').innerHTML = setAlert('warning', '正在取得公告⋯');
-            const response = await fetch(apiHost+'/sch-ann?rcg='+rcg).then(response => response.json());
+            const response = await fetch(apiHost+'/sch-ann?rcg='+rcg+'&host='+host).then(response => response.json());
             const content = response.content;
             setAnn(content);
         }

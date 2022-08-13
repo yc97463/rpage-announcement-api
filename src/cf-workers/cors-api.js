@@ -33,7 +33,8 @@ async function handleRequest(request) {
             case 'sch-ann':
                 url = "https://fetch-ann-asia-uhnhfw2fva-de.a.run.app";
                 rcg = ourl.searchParams.get('rcg');
-                res = await fetch(url+'/?rcg='+rcg, { method: 'GET'})
+                host = ourl.searchParams.get('host');
+                res = await fetch(url+'/?rcg='+rcg+'&host='+host, { method: 'GET'})
                 // url = "https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist";
                 // const rcg = ourl.searchParams.get('rcg');
                 // try{

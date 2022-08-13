@@ -1,11 +1,16 @@
 import fetch from "node-fetch";
 import http from "http";
+import url from "url";
+// const url = import('url');
 
 // Create a HTTP server
 http.createServer(async function (req, res) {
-  const rcg = 24;
-  const url = "https://www.smhs.kh.edu.tw/app/index.php?Action=mobilercglist";
-  const response = await fetch(url, {
+  const queryObject = url.parse(req.url, true).query;
+  const rcg = queryObject.rcg || 24;
+  const host = queryObject.rcg || "https://www.smhs.kh.edu.tw/";
+  // console.log(rcg);
+  const ourl = host+"/app/index.php?Action=mobilercglist";
+  const response = await fetch(ourl, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

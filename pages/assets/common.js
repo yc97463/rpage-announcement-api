@@ -2,7 +2,8 @@ const apiHost = 'https://api.smhs.dstw.dev/api';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let latest = urlParams.get('load');
-let rcg = urlParams.get('rcg');
+const rcg = urlParams.get('rcg');
+const host = urlParams.get('host') || "https://www.smhs.kh.edu.tw";
 console.log(latest);
 let now = new Date().getTime();
 if (latest == null) {
