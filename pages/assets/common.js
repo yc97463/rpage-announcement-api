@@ -7,7 +7,7 @@ const rcg = moduleId[2];
 const host = urlParams.get('host') || "https://www.smhs.kh.edu.tw";
 console.log(latest);
 let now = new Date().getTime();
-if (latest == null) {
+if (latest == null || latest < now) {
     if(rcg!=null){
         window.location.href = window.location.href+"&load="+now;
     }else{
