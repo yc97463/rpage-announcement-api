@@ -31,7 +31,7 @@ async function handleRequest(request) {
                 res = await fetch(url, { method: 'GET' });
                 break;
             case 'sch-ann':
-                url = "https://fetch-ann-asia-uhnhfw2fva-de.a.run.app";
+                url = "https://rpage-cors-uhnhfw2fva-de.a.run.app";
                 rcg = ourl.searchParams.get('rcg');
                 host = ourl.searchParams.get('host');
                 res = await fetch(url+'/?rcg='+rcg+'&host='+host, { method: 'GET'})
